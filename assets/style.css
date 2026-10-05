@@ -1,0 +1,226 @@
+/* ==========================================================
+   Movie Review Analysis System — shared styling
+   Neutral palette everywhere; green/red reserved for sentiment.
+   ========================================================== */
+
+:root {
+    --neutral-bg: #0f1117;
+    --card-bg: #171a23;
+    --card-border: #262b3a;
+    --text-primary: #f2f3f7;
+    --text-secondary: #9aa1b4;
+    --accent: #7c8cf8;
+    --accent-soft: rgba(124, 140, 248, 0.15);
+    --positive: #2ecc71;
+    --positive-bg: rgba(46, 204, 113, 0.12);
+    --positive-border: rgba(46, 204, 113, 0.45);
+    --negative: #ff5c6c;
+    --negative-bg: rgba(255, 92, 108, 0.12);
+    --negative-border: rgba(255, 92, 108, 0.45);
+    --radius-lg: 18px;
+    --radius-md: 12px;
+}
+
+/* ---------- Global type & layout polish ---------- */
+html, body, [class*="css"] {
+    font-family: "Segoe UI", "Inter", "Helvetica Neue", Arial, sans-serif;
+}
+
+.block-container {
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+    max-width: 1150px;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    animation: fadeInUp 0.55s ease both;
+}
+
+/* ---------- Hero / page header ---------- */
+.hero-title {
+    font-size: 2.6rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.2rem;
+    background: linear-gradient(90deg, var(--accent), #a5b4fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.6rem;
+}
+
+.section-title {
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin: 1.4rem 0 0.8rem 0;
+    color: var(--text-primary);
+}
+
+/* ---------- Generic neutral card ---------- */
+.app-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-lg);
+    padding: 1.4rem 1.5rem;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    margin-bottom: 1rem;
+}
+
+.app-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+    border-color: var(--accent);
+}
+
+.app-card h3 {
+    margin-top: 0;
+    margin-bottom: 0.4rem;
+    font-size: 1.15rem;
+}
+
+.app-card p {
+    color: var(--text-secondary);
+    font-size: 0.94rem;
+    margin: 0;
+}
+
+/* ---------- Metric-style cards ---------- */
+.metric-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-md);
+    padding: 1.1rem 1.2rem;
+    text-align: center;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.metric-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent);
+}
+
+.metric-label {
+    color: var(--text-secondary);
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.35rem;
+}
+
+.metric-value {
+    font-size: 1.7rem;
+    font-weight: 800;
+    color: var(--text-primary);
+}
+
+/* ---------- Sentiment result card ---------- */
+.result-card {
+    border-radius: var(--radius-lg);
+    padding: 1.8rem 2rem;
+    text-align: center;
+    margin: 1rem 0 1.4rem 0;
+    animation: fadeInUp 0.5s ease both;
+    border: 1.5px solid;
+}
+
+.result-card.positive {
+    background: var(--positive-bg);
+    border-color: var(--positive-border);
+}
+
+.result-card.negative {
+    background: var(--negative-bg);
+    border-color: var(--negative-border);
+}
+
+.result-headline {
+    font-size: 1.7rem;
+    font-weight: 800;
+    margin-bottom: 0.3rem;
+}
+
+.result-card.positive .result-headline { color: var(--positive); }
+.result-card.negative .result-headline { color: var(--negative); }
+
+.result-sub {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin-bottom: 0.6rem;
+}
+
+.result-confidence {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+/* ---------- Movie dashboard cards ---------- */
+.movie-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-lg);
+    padding: 1.2rem 1.3rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    margin-bottom: 1rem;
+}
+
+.movie-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.35);
+    border-color: var(--accent);
+}
+
+.movie-card h4 {
+    margin: 0 0 0.6rem 0;
+    font-size: 1.05rem;
+    color: var(--text-primary);
+}
+
+.movie-stat-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.88rem;
+    margin: 0.15rem 0;
+}
+
+.movie-stat-row .pct-positive { color: var(--positive); font-weight: 700; }
+.movie-stat-row .pct-negative { color: var(--negative); font-weight: 700; }
+.movie-stat-row .label { color: var(--text-secondary); }
+
+/* ---------- Buttons ---------- */
+.stButton > button {
+    border-radius: 10px;
+    border: 1px solid var(--accent);
+    background: var(--accent-soft);
+    color: var(--text-primary);
+    font-weight: 600;
+    padding: 0.55rem 1.2rem;
+    transition: all 0.2s ease;
+}
+
+.stButton > button:hover {
+    background: var(--accent);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(124, 140, 248, 0.35);
+}
+
+/* ---------- Misc ---------- */
+hr {
+    border-color: var(--card-border);
+}
+
+@media (max-width: 640px) {
+    .hero-title { font-size: 2rem; }
+    .app-card, .movie-card { padding: 1rem; }
+}
